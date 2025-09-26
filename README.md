@@ -1,42 +1,17 @@
+
+1.  [Introduction aux LLM](./00_Introduction_LLM.md)
+2.  [L'architecture Transformers](./01_Architecture_Transformers.md)
+3.  [La Tokenisation](./02_Tokenisation.md)
+4.  [Les Datasets](./03_Datasets.md)
+5.  [Entraînement et Fine-Tuning](./04_Entrainement_et_Fine_Tuning.md)
+6.  [Inférence et Quantization](./05_Inference_et_Quantization.md)
+7.  [Évaluation des Modèles](./06_Evaluation_des_Modeles.md)
+8.  [Éthique et Limites](./07_Ethique_et_Limites.md)
+9.  [Glossaire](./08_Glossaire.md)
+
 Avec LoRA est-ce que ce sont les paramètres des matrices A et B qui "apprennent" ou mis à jour ou si ce sont les paramêtre de la matrice résultate de A * B ? 
 
-
-# Projet de Fine-Tuning d'un LLM sur un Style de Tweets
-
-Ce projet a pour but de spécialiser un modèle de langage (LLM) pour qu'il apprenne et reproduise un style d'écriture personnel basé sur une archive de tweets. L'objectif est de réaliser un "continued pre-training" (DAPT) pour que le modèle s'imprègne du ton, du vocabulaire et de la cadence spécifiques au corpus de textes.
-
-* [Table des Matières](#table-des-matières)
-* [1. Le Processus de Fine-Tuning](#1-le-processus-de-fine-tuning)
-    * [Étape 1 : Préparation des Données](#étape-1--préparation-des-données)
-    * [Étape 2 : Configuration de l'Environnement](#étape-2--configuration-de-lenvironnement)
-    * [Étape 3 : Choix de la Méthode et Chargement du Modèle](#étape-3--choix-de-la-méthode-et-chargement-du-modèle)
-    * [Étape 4 : Entraînement (Fine-Tuning)](#étape-4--entraînement-fine-tuning)
-    * [Étape 5 : Évaluation et Sauvegarde](#étape-5--évaluation-et-sauvegarde)
-    * [Étape 6 : Inférence](#étape-6--inférence)
-* [2. Configuration du Projet](#2-configuration-du-projet)
-    * [Structure des Données](#structure-des-données)
-    * [Chemins des Fichiers](#chemins-des-fichiers)
-    * [Structure des Répertoires de Sortie](#structure-des-répertoires-de-sortie)
-* [3. Environnement et Outils](#3-environnement-et-outils)
-    * [Environnement Technique](#environnement-technique)
-    * [Plateformes](#plateformes)
-    * [Commandes utiles](#commandes-utiles)
-* [4. Exemples de Code et Snippets](#4-exemples-de-code-et-snippets)
-    * [Exemple de Fine-Tuning avec Hugging Face](#exemple-de-fine-tuning-avec-hugging-face)
-    * [Interprétation des Résultats d'Entraînement](#interprétation-des-résultats-dentraînement)
-    * [Trouver le Masque d'un Modèle](#trouver-le-masque-dun-modèle)
-* [5. Glossaire des Concepts Clés](#5-glossaire-des-concepts-clés)
-    * [Termes Généraux](#termes-généraux)
-    * [Techniques de Fine-Tuning](#techniques-de-fine-tuning)
-    * [Métriques et Paramètres d'Entraînement](#métriques-et-paramètres-dentraînement)
-    * [Bibliothèques et Outils](#bibliothèques-et-outils)
-    * [Architectures et Pipelines](#architectures-et-pipelines)
-* [6. Prompts](#6-prompts)
-    * [Prompt 1 : Guide interactif pour le fine-tuning](#prompt-1--guide-interactif-pour-le-fine-tuning)
-    * [Prompt 2 : Refactorisation de code Python](#prompt-2--refactorisation-de-code-python)
-* [7. Foire Aux Questions (FAQ)](#7-foire-aux-questions-faq)
-
-## 1. Le Processus de Fine-Tuning
+# 1. Le Processus de Fine-Tuning
 
 Voici le flux de travail complet, de la donnée brute au modèle spécialisé.
 
@@ -58,7 +33,7 @@ Voici le flux de travail complet, de la donnée brute au modèle spécialisé.
 2.  **Choisir la Méthode de Fine-Tuning** :
     * **Full Fine-Tuning** : Très gourmand, ré-entraîne tous les poids du modèle.
     * **PEFT (Parameter-Efficient Fine-Tuning)** : Approche recommandée pour les ressources limitées.
-        * **LoRA/QLoRA** : N'entraîne que de petites matrices ("adaptateurs") ajoutées au modèle, tout en gelant les poids d'origine. QLoRA optimise davantage la mémoire en utilisant la quantification.
+        xxx
 3.  **Préparer le Modèle pour PEFT/QLoRA** : Appliquer la configuration pour injecter les adaptateurs LoRA dans le modèle et le préparer à l'entraînement.
 
 ### Étape 4 : Entraînement (Fine-Tuning)
@@ -102,38 +77,14 @@ chemin_donnees_test       = "./data/processed/test.jsonl"
 
 ### Structure des Répertoires de Sortie
 
-Le `Trainer` de Hugging Face crée automatiquement un répertoire de sortie qui contient :
-* **Checkpoints** : Des sauvegardes intermédiaires (ex: `checkpoint-500/`, `checkpoint-1000/`) pour reprendre l'entraînement en cas d'interruption.
-* **`final_model/`** : Le modèle final prêt à être utilisé pour l'inférence.
 
-```
-mon-style-de-tweet-v1/
-├── checkpoint-500/
-│   ├── config.json
-│   ├── model.safetensors
-│   └── ...
-├── checkpoint-1000/
-│   └── ...
-└── final_model/
-    ├── config.json
-    ├── model.safetensors
-    ├── tokenizer.json
-    └── ...
-```
+
 * `config.json`: Décrit l'architecture du modèle.
 * `model.safetensors`: Contient les poids (paramètres) appris.
 * `tokenizer.json`, `vocab.json`: Fichiers de configuration du tokenizer.
 
 ---
 
-## 3. Environnement et Outils
-
-### Environnement Technique
-* **Système d'exploitation** : Linux-Ubuntu 24.04
-* **IDE** : PyCharm 2025.2.0.1
-* **Langage** : Python 3.12
-* **Matériel** : 32Go RAM, 12Go VRAM (GPU)
-* **Outils IA** : Ollama, Hugging Face
 
 ### Plateformes
 * **Local** : Utilise les répertoires `data/processed` et `data/raw`.
@@ -237,7 +188,6 @@ TrainOutput(
 * **train_samples_per_second** : Nombre d'exemples traités par seconde.
 * **train_steps_per_second** : Nombre de lots (steps) traités par seconde.
 * **total_flos** : Mesure de la quantité totale de calculs effectués.
-* **epoch** : Nombre de fois où l'ensemble du dataset a été parcouru.
 * **gradient decent** The direction od steepest increase
 * 
 ### Trouver le Masque d'un Modèle
@@ -256,62 +206,13 @@ tokenizer_bert = AutoTokenizer.from_pretrained("bert-base-uncased")
 print(f"Masque pour BERT : {tokenizer_bert.mask_token}") # -> [MASK]
 ```
 
----
-
-## 5. Glossaire des Concepts Clés
-
-### Termes Généraux
-* **Attention** : Mécanisme permettant au modèle de se concentrer sur des parties spécifiques du texte pour mieux comprendre le contexte.
-* **Dataset** : Ensemble de données structurées utilisé pour entraîner ou évaluer un modèle.
-* **Embedding** : Représentation vectorielle d'un token ou d'un texte capturant son sens sémantique. `word embedding` est une technique spécifique pour représenter les mots sous forme de vecteurs.
-* **Inference** : Utilisation d'un modèle entraîné pour générer des prédictions.
-* **Mixture of Experts (MoE)** : Architecture où plusieurs sous-réseaux ("experts") sont activés sélectivement par un routeur pour traiter chaque token.
-* **Overfitting** : Situation où un modèle apprend "par cœur" les données d'entraînement et perd sa capacité à généraliser sur de nouvelles données.
-* **Perplexité** : Mesure de l'incertitude d'un modèle pour prédire le prochain token. Une faible perplexité indique un meilleur modèle.
-* **Pré-entraînement** : Phase initiale d'apprentissage d'un LLM sur un très large corpus de textes.
-* **Token** : Unité de base du texte (mot, sous-mot ou caractère) que le modèle traite.
-* **Tokenisation** : Processus de segmentation d'un texte en tokens.
-* **Zero-shot learning** : Capacité d'un modèle à effectuer une tâche pour laquelle il n'a pas été explicitement entraîné.
-* **TQDM** bibliothèque Python utilisée pour afficher une barre de progression lors de l’exécution de boucles
-
-### Techniques de Fine-Tuning
-* **Fine-tuning** : Ajustement d'un modèle pré-entraîné sur des données spécifiques pour l'adapter à une tâche ciblée.
-* **LoRA (Low-Rank Adaptation)** : Technique de PEFT qui gèle le modèle original et n'entraîne que de petites matrices ("adaptateurs") ajoutées à certaines couches, réduisant considérablement le coût de calcul.
-* **The rank of a matrix** is the maximum number of linearly independent rows or, equivalently, columns in the matrix. Le rang de la matrice LoRA, noté r, est un hyperparamètre que vous définissez avant de lancer l'entraînement, au moment de la configuration du modèle. Le rang de la matrice LoRA, noté r, est un hyperparamètre que vous définissez avant de lancer l'entraînement, au moment de la configuration du modèle. Le rang d'une matrice est un concept clé en algèbre linéaire qui mesure, intuitivement, le "niveau d'indépendance" ou la "quantité d'information utile" contenue dans la matrice.
-* **low-rank matrix** is a matrix with a rank significantly lower than its number of rows or columns, meaning its rows (or columns) are not all linearly independent. 
-* **PEFT (Parameter-Efficient Fine-Tuning)** : Famille de méthodes (dont LoRA est un exemple) visant à n'ajuster qu'une petite fraction des paramètres du modèle.
-* **Quantisation** : Technique de réduction de la précision des poids du modèle (ex: de 32 bits à 4 bits) pour réduire la consommation de mémoire et accélérer l'inférence. On change le format (souvent flottant → entier)
-* **Réduction de Précision** : Technique similaire à la quantisation. On garde le format flottant, mais avec moins de bits.
-* **QLoRA (Quantized LoRA)** : Combine la quantification et LoRA pour un fine-tuning encore plus efficace en termes de mémoire.
-* **DAPT** (Domain-adaptive Pre-Training) : Technique qui pré-entraîne davantage les LLM sur des données non étiquetées spécifiques à un domaine à l'aide de la modélisation linguistique masquée (MLM) afin d'améliorer la spécialisation.
-
 
 ### Métriques et Paramètres d'Entraînement
-* **Epoch** : Un passage complet à travers l'ensemble des données d'entraînement.
 * **grad_norm (norme du gradient)** : Mesure l'ampleur des mises à jour des poids du modèle à chaque étape.
-* **Hyperparamètres** : Paramètres définis avant l'entraînement qui contrôlent le processus (ex: taux d'apprentissage, taille de lot).
 * **logging_steps** : Fréquence (en nombre de steps) à laquelle afficher les métriques de progression.
-* **loss** : Mesure de l'erreur entre les prédictions du modèle et les véritables données. C'est la valeur que l'on cherche à minimiser.
 * **save_steps** : Fréquence (en nombre de steps) à laquelle sauvegarder un checkpoint du modèle.
 * **split="train"** : Argument utilisé dans `load_dataset` pour sélectionner une partie spécifique (ici, l'ensemble d'entraînement) d'un jeu de données.
 * **steps** : Nombre total d'itérations d'entraînement. Calcul : `(Taille du dataset / Taille de lot) * Nombre d'époques`.
-
-### Bibliothèques et Outils
-* **accelerate** : Bibliothèque Hugging Face qui simplifie la gestion du matériel (GPU/CPU/multi-GPU).
-* **bitsandbytes** : Bibliothèque permettant la quantification des modèles (essentielle pour QLoRA).
-* **Unsloth** : Bibliothèque optimisée qui accélère le fine-tuning des LLMs (comme Llama, Mistral) en réduisant drastiquement la consommation de VRAM.
-
-### Architectures et Pipelines
-* **BERT** : Une architecture de modèle de type "Encoder-only". `bert-base-cased` est un checkpoint spécifique (un ensemble de poids) pour cette architecture.
-* **Encoder / Decoder / Encoder-decoder** :
-    * **Encoder only** : Transforme le texte d'entrée en une représentation numérique (features). À chaque étape, les couches d'attention peuvent accéder à tous les mots de la phrase d'entrée. Bi-directional attention: BERT, DistilBERT, ModernBERT
-    * **Decoder only** : Utilise cette représentation pour générer le texte de sortie. Unidirectionel (acccès au cobtexte de gauche seulement). GPT-2, GPT-Neo, Llama, Gemma, Deepseek-v3. Tâches: Génération de texte, tésumé, traduction, Question-Réponde, Code, Raisonnement, "Few-shot learning" 
-    * **Encoder-Decoder** Sequence to sequence. Prediction de la suite du texte. BART, T5, mBART, Marian, 
-
-* **Autoregressive models** génère chaque nouveau token en se basant sur tous les tokens précédents de la séquence. À chaque étape, le modèle prend la séquence déjà générée prédit le prochain token le plus probable. La prédiction se poursuit jusqu’à la fin de la séquence (ou jusqu’à un token de fin).
-* **Pipelines** : Classes de haut niveau de Hugging Face pour utiliser facilement des modèles pour des tâches courantes (traduction, résumé, génération de texte, etc.). Le pipeline sert à exécuter un modèle déjà entraîné, pas à l’entraîner. C'est principalement un outil d'inférence
-
----
 
 ## 6. Prompts
 
@@ -341,25 +242,6 @@ print(f"Masque pour BERT : {tokenizer_bert.mask_token}") # -> [MASK]
 
 ---
 
-## 7. Foire Aux Questions (FAQ)
-
-* **Pourquoi `split->train` dans `test/dataset_info.json` ?**
-    * [Lien de discussion](https://github.com/copilot/share/020851b8-4ba0-8094-8011-140140a04999)
-* **Pourquoi un chemin contient-il `./` ?**
-    * [Lien de discussion](https://github.com/copilot/share/c20113b8-0284-8832-9941-860860684988)
-* **Pourquoi ne peut-on pas simplement copier les fichiers d'Ollama ?**
-    * [Lien de discussion](https://gemini.google.com/app/0c348f71e2349304)
-* **Qu'est-ce que le "préchauffage" du taux d'apprentissage (`warmup_steps`) ?**
-    * [Lien de discussion](https://gemini.google.com/app/745a33b423c7a4b1)
-* **Les versions de Llama3 (Meta vs Ollama) sont-elles identiques ?**
-    * [Lien de discussion](https://grok.com/share/c2hhcmQtMg%3D%3D_f3f103b1-4250-4fc7-86e5-2fd09f9f34ac)
-* **Ressources sur la tokenisation :**
-    * [Lien 1](https://gemini.google.com/app/018aa5e35a1b5146)
-    * [Lien 2](https://grok.com/share/c2hhcmQtMg%3D%3D_ee4742d2-f4a0-4659-92be-b45a497c159d)
-* **Quels modèles LLM de Google peuvent être fine-tunés ?**
-    * [Gemma](https://github.com/copilot/share/4261422a-0ba4-8c12-b003-9641442249da)
-* **Fine-tuning vs pré-entraînement continu :**
-    * [Lien de discussion](https://gemini.google.com/app/ea602cce5c2d9510)
 
 
 #### Historique des modèles 
