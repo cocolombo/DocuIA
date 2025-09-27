@@ -1,8 +1,8 @@
 # Entraînement et Fine-Tuning
 
-https://grok.com/share/c2hhcmQtMg%3D%3D_034ef7a8-49c5-4f72-a5cd-eb1428606fae
-
-https://g.co/gemini/share/b980640f6436
+Les matrices low-rank A et B détails:
+[](https://grok.com/share/c2hhcmQtMg%3D%3D_034ef7a8-49c5-4f72-a5cd-eb1428606fae)
+[](https://g.co/gemini/share/b980640f6436)
 
 ### Table des matières
 
@@ -10,10 +10,6 @@ https://g.co/gemini/share/b980640f6436
 2. Spécialisation : le Fine-Tuning
 3. Techniques de Fine-Tuning efficaces (LoRA, QLoRA)
 4. Apprentissage par renforcement (RLHF)
-
-Les matrices low-rank A et B détails:
-[](https://grok.com/share/c2hhcmQtMg%3D%3D_034ef7a8-49c5-4f72-a5cd-eb1428606fae)
-[](https://g.co/gemini/share/b980640f6436)
 
 Le `Trainer` de Hugging Face crée automatiquement un répertoire de sortie qui contient :
 
