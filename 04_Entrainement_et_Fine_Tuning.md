@@ -1,8 +1,8 @@
 # Entraînement et Fine-Tuning
 
 Les matrices low-rank A et B détails:
-[](https://grok.com/share/c2hhcmQtMg%3D%3D_034ef7a8-49c5-4f72-a5cd-eb1428606fae)
-[](https://g.co/gemini/share/b980640f6436)
+[Matrices A et B](https://grok.com/share/c2hhcmQtMg%3D%3D_034ef7a8-49c5-4f72-a5cd-eb1428606fae)
+[Matrices A et B](https://g.co/gemini/share/b980640f6436)
 
 ### Table des matières
 
