@@ -28,7 +28,7 @@ Voici une liste alphabétique de termes techniques essentiels liés aux LLM. Ell
 * **Contexte (Context Window)** : La quantité de texte qu'un modèle peut prendre en compte à un moment donné.
 * **Corpus** : Un grand ensemble de textes utilisé pour l'entraînement des modèles de langage.
 
-### D
+### D 
 
 * **DAPT** (Domain-adaptive Pre-Training) : Technique qui pré-entraîne davantage les LLM sur des données non étiquetées spécifiques à un domaine à l'aide de la modélisation linguistique masquée (MLM) afin d'améliorer la spécialisation.
 * **Dataset** : Ensemble de données utilisé pour l'entraînement, la validation ou le test d'un modèle.

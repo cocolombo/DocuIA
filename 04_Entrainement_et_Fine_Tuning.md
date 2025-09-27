@@ -6,10 +6,30 @@ Les matrices low-rank A et B détails:
 
 ### Table des matières
 
-1. Pré-entraînement (Pre-training)
-2. Spécialisation : le Fine-Tuning
-3. Techniques de Fine-Tuning efficaces (LoRA, QLoRA)
-4. Apprentissage par renforcement (RLHF)
+1. [Pré-entraînement (Pre-training)](#pré-entraînement-pre-training)
+2. [Spécialisation : le Fine-Tuning](#spécialisation--le-fine-tuning)
+3. [Techniques de Fine-Tuning efficaces (LoRA, QLoRA)](#techniques-de-fine-tuning-efficaces-lora-qlora)
+4. [Apprentissage par renforcement (RLHF)](#apprentissage-par-renforcement-rlhf)
+
+---
+
+### Pré-entraînement (Pre-training)
+*(Section à compléter)*
+
+---
+
+### Spécialisation : le Fine-Tuning
+*(Section à compléter)*
+
+---
+
+### Techniques de Fine-Tuning efficaces (LoRA, QLoRA)
+*(Section à compléter)*
+
+---
+
+### Apprentissage par renforcement (RLHF)
+*(Section à compléter)*
 
 Le `Trainer` de Hugging Face crée automatiquement un répertoire de sortie qui contient :
 

@@ -30,7 +30,8 @@ Gemma 2, a family of lightweight, state-of-the-art open models ranging from 2B t
 
 SmolLM2, a state-of-the-art small language model (135 million to 1.7 billion parameters) that achieves impressive performance despite its compact size, and unlocking new possibilities for mobile and edge devices. [November 2024]
 
+
 #### 3. Principaux types de modèles
 
 
-#### 4.  Cas d'usage courants
+#### 4. Cas d'usage courants

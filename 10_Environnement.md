@@ -6,5 +6,6 @@
 * **Langage** : Python 3.12
 * **Matériel** : 32Go RAM, 12Go VRAM (GPU)
 * **Outils IA** : Ollama, Hugging Face
+* 
 
 
