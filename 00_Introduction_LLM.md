@@ -1,11 +1,12 @@
 # Introduction aux LLM
 
 ### Table des matières
-1.  Qu'est-ce qu'un LLM ?
+1.  [Qu'est-ce qu'un LLM ?](#1--qu'est-ce-qu'un-llm?)
 2.  [Historique et évolution](#2--historique-et-évolution)
-3.  Principaux types de modèles (Encoder-only, Decoder-only, etc.)
-4.  Cas d'usage courants
+3.  [Principaux types de modèles (Encoder-only, Decoder-only, etc.)](#3-principaux-types-de-modèles)
+4.  [Cas d'usage courants](#4-cas-dusage-courants)
 
+#### 1- Qu'est-ce qu'un LLM ?
 
 #### 2- Historique et évolution
 
@@ -28,3 +29,8 @@ Mistral, a 7-billion-parameter language model that outperforms Llama 2 13B acros
 Gemma 2, a family of lightweight, state-of-the-art open models ranging from 2B to 27B parameters that incorporate interleaved local-global attentions and group-query attention, with smaller models trained using knowledge distillation to deliver performance competitive with models 2-3 times larger. [May 2024]
 
 SmolLM2, a state-of-the-art small language model (135 million to 1.7 billion parameters) that achieves impressive performance despite its compact size, and unlocking new possibilities for mobile and edge devices. [November 2024]
+
+#### 3. Principaux types de modèles
+
+
+#### 4.  Cas d'usage courants
