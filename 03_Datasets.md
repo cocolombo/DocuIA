@@ -62,27 +62,27 @@ Un dataset est une collection structurée de données textuelles utilisée pour 
         Prendre un sous-ensemble si les données sont trop volumineuses.
         Séparer en jeux d’entraînement, validation, et test.
 
-- Nettoyage des données
-    - a) Gestion des valeurs manquantes
+- Nettoyage des données  
+    - a) Gestion des valeurs manquantes  
             Supprimer les lignes ou colonnes trop incomplètes.
             Imputer les valeurs : remplir avec la moyenne, la médiane, une valeur spécifique, ou par interpolation.
-    - b) Détection et gestion des doublons  
+    - b) Détection et gestion des doublons    
             Supprimer les lignes identiques ou similaires.
-    - c) Correction des incohérences
+    - c) Correction des incohérences  
             Uniformiser la casse ("Paris" et "paris" → "Paris").
             Corriger les fautes de frappe, les abréviations non standardisées, etc.
-    - d) Nettoyage du texte (spécifique NLP/LLM)
+    - d) Nettoyage du texte (spécifique NLP/LLM)  
             Retirer: balises HTML, caractères spéciaux, espaces multiples, emojis ou symboles non désirés.
             Normaliser: accents, ponctuation, casse.
             Tokeniser le texte si besoin.
             Filtrer les langues, retirer les textes trop courts ou non pertinents.
-    - e) Filtrage de contenu
+    - e) Filtrage de contenu  
             Éliminer les textes offensants, sensibles ou non adaptés au contexte souhaité.
             Supprimer le spam, les publicités, les parties non textuelles (code, logs, etc. selon le besoin).
-    - f) Conversion des types
+    - f) Conversion des types  
             Assurer que les colonnes numériques sont bien en float/int, les dates en datetime, etc.
 
-    - Code
+    - Code  
 
 ---
 
