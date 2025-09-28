@@ -53,39 +53,36 @@ Un dataset est une collection structurée de données textuelles utilisée pour 
 
 - Préparer les données
     - Rassembler les données
-    Collecte depuis différentes sources : fichiers CSV, bases de données SQL, APIs, web scraping, etc.
-    Fusionner les différentes sources si besoin.
+        Collecte depuis différentes sources : fichiers CSV, bases de données SQL, APIs, web scraping, etc.
+        Fusionner les différentes sources si besoin.
     - Vérifier la structure
-    Vérifier que les colonnes attendues sont présentes.
-    Uniformiser les formats (dates, nombres, textes…).
+        Vérifier que les colonnes attendues sont présentes.
+        Uniformiser les formats (dates, nombres, textes…).
     - Échantillonnage
-    Prendre un sous-ensemble si les données sont trop volumineuses.
-    Séparer en jeux d’entraînement, validation, et test.
+        Prendre un sous-ensemble si les données sont trop volumineuses.
+        Séparer en jeux d’entraînement, validation, et test.
 
 - Nettoyage des données
     - a) Gestion des valeurs manquantes
-        Supprimer les lignes ou colonnes trop incomplètes.
-        Imputer les valeurs : remplir avec la moyenne, la médiane, une valeur spécifique, ou par interpolation.
+            Supprimer les lignes ou colonnes trop incomplètes.
+            Imputer les valeurs : remplir avec la moyenne, la médiane, une valeur spécifique, ou par interpolation.
     - b) Détection et gestion des doublons  
-        Supprimer les lignes identiques ou similaires.
+            Supprimer les lignes identiques ou similaires.
     - c) Correction des incohérences
-        Uniformiser la casse ("Paris" et "paris" → "Paris").
-        Corriger les fautes de frappe, les abréviations non standardisées, etc.
+            Uniformiser la casse ("Paris" et "paris" → "Paris").
+            Corriger les fautes de frappe, les abréviations non standardisées, etc.
     - d) Nettoyage du texte (spécifique NLP/LLM)
-        Retirer: balises HTML, caractères spéciaux, espaces multiples, emojis ou symboles non désirés.
-        Normaliser: accents, ponctuation, casse.
-        Tokeniser le texte si besoin.
-        Filtrer les langues, retirer les textes trop courts ou non pertinents.
+            Retirer: balises HTML, caractères spéciaux, espaces multiples, emojis ou symboles non désirés.
+            Normaliser: accents, ponctuation, casse.
+            Tokeniser le texte si besoin.
+            Filtrer les langues, retirer les textes trop courts ou non pertinents.
     - e) Filtrage de contenu
-        Éliminer les textes offensants, sensibles ou non adaptés au contexte souhaité.
-        Supprimer le spam, les publicités, les parties non textuelles (code, logs, etc. selon le besoin).
+            Éliminer les textes offensants, sensibles ou non adaptés au contexte souhaité.
+            Supprimer le spam, les publicités, les parties non textuelles (code, logs, etc. selon le besoin).
     - f) Conversion des types
-        Assurer que les colonnes numériques sont bien en float/int, les dates en datetime, etc.
+            Assurer que les colonnes numériques sont bien en float/int, les dates en datetime, etc.
 
     - Code
-
-
-
 
 ---
 
