@@ -8,7 +8,8 @@
 4. [Tokens spéciaux (PAD, CLS, SEP)](#tokens-spéciaux-pad-cls-sep)
 5. [Applications et limites](#applications-et-limites)
 6. [Outils et bibliothèques](#outils-et-bibliothèques)
-7. [Exemples de tokenisation](#exemples-de-tokenisation)
+7. [tokeniser approprié à la langue](#Tokeniser-approprié-à-la-langue-(textes multilingues))
+8. [Exemples de tokenisation](#exemples-de-tokenisation)
 
 ---
 
@@ -77,23 +78,27 @@ Les modèles modernes intègrent des *tokens spéciaux* pour structurer les séq
 - **BERT Tokenizer** : implémentation WordPiece spécialement pour BERT.
 
 ---
+### Tokeniser-approprié-à-la-langue (textes multilingues)
+- Oui, il est généralement recommandé d'utiliser un tokenizer adapté à la langue du texte.
+- Le tokenizer de BERT Multilingual ou XLM-R), qui sont conçus pour gérer plusieurs langues dans un même corpus.
+- Pour les textes en français, il est conseillé d’utiliser un tokenizer pré-entraîné sur le français (ex: `camembert-base`, `bert-base-multilingual-cased`).
 
 ### Exemples de tokenisation
 
 #### 1. Tokenisation par mot
-Texte :  
+- Texte :  
 `Le chat mange.`  
 Tokens :  
 `["Le", "chat", "mange", "."]`
 
 #### 2. Tokenisation par caractère
-Texte :  
+- Texte :  
 `chat`  
 Tokens :  
 `["c", "h", "a", "t"]`
 
 #### 3. Tokenisation subword (WordPiece/BPE)
-Texte :  
+- Texte :  
 `incroyablement`  
 Tokens (WordPiece) :  
 `["in", "##croy", "##able", "##ment"]`  
@@ -101,25 +106,46 @@ Tokens (BPE/SentencePiece, exemple) :
 `["incroy", "able", "ment"]`
 
 #### 4. Ajout de tokens spéciaux  
-Texte :  
+- Texte :  
 `Le chat mange.`  
 Tokens (BERT) :  
 `["[CLS]", "Le", "chat", "mange", ".", "[SEP]"]`
 
 #### 5. Gestion d’un mot inconnu  
-Texte :  
+- Texte :  
 `pythonicité` (inconnu du vocabulaire)  
 Tokens (WordPiece) :  
 `["python", "##ic", "##ité"]`  
 Tokens (si aucun fragment n’existe) :  
 `["[UNK]"]`
 
-Si le vocabulaire contient les fragments "python" et "##icité", alors le mot pythonicité sera tokenisé en:
+- Si le vocabulaire contient les fragments "python" et "##icité", alors le mot pythonicité sera tokenisé en:
 ["python", "##icité"]
 
-Si le vocabulaire possède les fragments "python", "##ic", et "##ité", la tokenisation sera:
+- Si le vocabulaire possède les fragments "python", "##ic", et "##ité", la tokenisation sera:
 ["python", "##ic", "##ité"]
 
-Si le vocabulaire ne contient aucun fragment approprié après "python", le reste du mot pourrait être remplacé par [UNK].
+- Si le vocabulaire ne contient aucun fragment approprié après "python", le reste du mot pourrait être remplacé par [UNK].
 
+#### 6- Passer le texte au tokeniser
+
+```python
+from transformers import BertTokenizer
+
+# Charger le tokenizer pré-entraîné BERT
+tokenizer = BertTokenizer.from_pretrained("bert-base-uncased")
+
+# Texte à tokeniser
+texte = "Pythonicité est un mot inventé."
+
+# Tokenisation
+tokens = tokenizer.tokenize(texte)
+print(tokens)
+```
+#### 7- Pour obtenir les identifiants (IDs) des tokens
+
+```python
+input_ids = tokenizer.encode(texte)
+print(input_ids)
+```
 ---
